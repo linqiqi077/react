@@ -45,19 +45,8 @@ export const NavItem = styled.div`
 export const SreachWrapper = styled.div`
     position:relative;
     float:left;
-    .slide-enter {
-        transition:all 0.2s ease-out; 
-    }
-    .slide-enter-active {
-        width:240px;
-    }
-    .slide-exit {
-        transition:all 0.2s ease-out; 
-    }
-    .slide-exit-active {
-        width:160px;
-    }
-    .iconfont {
+    
+    .zoom {
         position: absolute;
         right:5px;
         bottom:4px;
@@ -73,7 +62,7 @@ export const SreachWrapper = styled.div`
 `
 
 export const NavSearch = styled.input.attrs({
-    placeholder:"搜索"
+    placeholder: "搜索"
 })`
     width:160px;
     height:38px;
@@ -87,6 +76,18 @@ export const NavSearch = styled.input.attrs({
     background:#eee;
     font-size:14px;
     color:#666;
+    &.slide-enter {
+        transition:all 0.2s ease-out; 
+    }
+    &.slide-enter-active {
+        width:240px;
+    }
+    &.slide-exit {
+        transition:all 0.2s ease-out; 
+    }
+    &.slide-exit-active {
+        width:160px;
+    }
     &::placeholder{
         color:#999
     }
@@ -119,4 +120,53 @@ export const Button = styled.div`
         color:#fff;
         background: #ec6149;
     }
+`
+
+export const SearchInfo = styled.div`
+    position:absolute;
+    left:0px;
+    top:56px;
+    width:240px;
+    padding:0 20px;
+    box-shadow: 0 0   8px rgba(0,0,0,0.2)
+`
+export const SearchInfoTitle = styled.div`
+    margin-top:20px;
+    margin-bottom:15px;
+    line-height:20px;
+    font-size:14px;
+    color:#969696;
+`
+
+export const SearchInfoSwitch = styled.span`
+    float:right;
+    font-size:13px;
+    cursor:pointer;
+    .spin {
+        display:block;
+        float:left;
+        font-size:12px;
+        margin-right:2px;
+        transition: all .1s ease-in;
+        transform-origin: center center;
+    }
+`
+
+export const SearchInfoItem = styled.a`
+    font-size:12px;
+    padding: 0 5px;
+    line-height:20px;
+    border: 1px solid #ddd;
+    border-radius:3px;
+    color: #787878;
+   display:block;
+   float:left;
+   margin-right:10px;
+   margin-bottom:10px;
+   &:hover {
+    color: #333; 
+   }
+`
+export const SearchInfoList = styled.div`
+    overflow:hidden;
 `

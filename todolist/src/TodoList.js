@@ -11,32 +11,67 @@ class TodoList extends Component {
 		}
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.addList = this.addList.bind(this);
+		this.addList = this.addList.bind(this);
+		this.delItem = this.delItem.bind(this)
 	}
 
 	handleInputChange(event) {
 		let value = event.target.value;
-		this.setState({
-			inputValue: value
-		})
+		this.setState(() => ({ inputValue: value })) // 现在setState可以接受一个函数
+		// this.setState({
+		// 	inputValue: value
+		// })
 	}
 
 	addList() {
-		this.setState({
-			list: [...this.state.list, this.state.inputValue],
+		this.setState((prevState) => ({ // setState可以接收一个参数，就是修改前的状态
+			list: [...prevState.list, prevState.inputValue],
 			inputValue: ''
-		})
+		}))
+
+		// this.setState({
+		// 	list: [...this.state.list, this.state.inputValue],
+		// 	inputValue: ''
+		// })
 	}
 
 	delItem(i) {
-		const list = [...this.state.list];
-		list.splice(i, 1)
-		this.setState(
-			{
-				list: list
-			}
+		// var list = [...this.state.list];
+		// list.splice(i, 1)
+		this.setState((prevState) => {
+			var list = [...prevState.list];
+			list.splice(i, 1)
+			return { list }
+		})
+
+		// this.setState(
+		// 	{
+		// 		list: list
+		// 	}
+		// )
+	}
+	getTodoItem() {
+		return (
+			this.state.list.map((val, index) => {
+				console.log(val)
+				return (
+					<div key = {index}>
+						<TodoItem
+							val={val}
+							index={index}
+							deleteItem={this.delItem}
+						/>
+						{/* <li
+						key={index}
+						onClick={this.delItem.bind(this, index)}
+						dangerouslySetInnerHTML={{ __html: val }}
+					>
+					</li> */}
+					</div>
+				)
+			})
 		)
 	}
-
 	render() {
 		return (
 			<Fragment>
@@ -55,23 +90,7 @@ class TodoList extends Component {
 				<ul>
 					{/* dangerouslySetInnerHTML 禁止符号自动转义 */}
 					{
-						this.state.list.map((val, index) => {
-							return (
-								<div>
-									<TodoItem
-										val={val}
-										index={index}
-										deleteItem = {this.delItem.bind(this)}
-									/>
-									{/* <li
-										key={index}
-										onClick={this.delItem.bind(this, index)}
-										dangerouslySetInnerHTML={{ __html: val }}
-									>
-									</li> */}
-								</div>
-							)
-						})
+						this.getTodoItem()
 					}
 				</ul>
 

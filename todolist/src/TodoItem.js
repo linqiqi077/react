@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 
 class TodoItem extends Component {
     constructor(props) {
@@ -13,7 +13,6 @@ class TodoItem extends Component {
 
     handleClick(){
         this.props.deleteItem(this.state.index)
-        // alert(this.state.index)
     }
 
     render() {
