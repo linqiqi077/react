@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import { HomeWrapper, HomeLeft, HomeRight } from './style'
 import Topic from './components/Topic';
 import List from './components/List';
 import Recommend from './components/Recommend';
 import Writer from './components/Writer';
+import { actionCreators } from './store'
 
 
 class Home extends Component {
+    componentDidMount(){
+        this.props.changeHomeData()
+    }
     render() {
         return (
             <div>
@@ -29,5 +34,13 @@ class Home extends Component {
         )
     }
 }
-
-export default Home;
+const mapState =(state)=>({})
+const mapDispatch =(dispatch)=>({
+    // action通过这种方法派发给store。store会直接转发给reducer；
+    changeHomeData(){
+        // 接受actionCreator创建的action，然后派发给store
+       const action =  actionCreators.getHomeInfo()
+       dispatch(action)
+    }
+})
+export default connect(mapState,mapDispatch)(Home);

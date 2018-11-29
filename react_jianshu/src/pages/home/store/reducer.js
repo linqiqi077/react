@@ -1,4 +1,5 @@
 import { fromJS } from 'immutable'
+import { CHANGE_HOME_DATA } from './actionTypes'
 
 import pic1 from '../../../statics/banner-1.png'
 import pic2 from '../../../statics/banner-2.png'
@@ -8,64 +9,28 @@ import pic5 from '../../../statics/banner-5.png'
 
 // 第一步：用fromJS方法把数据转换为不可改变的数据
 const defaultState = fromJS({
-    topicList: [
-        {
-            id: 1,
-            imgUrl: "https://upload-images.jianshu.io/upload_images/13797807-c5085d65aabcd066.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240",
-            title: "社会热点"
-        },
-        {
-            id: 2,
-            imgUrl: "https://upload-images.jianshu.io/upload_images/13797807-c5085d65aabcd066.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240",
-            title: "热点"
-        },
-        {
-            id: 3,
-            imgUrl: "https://upload-images.jianshu.io/upload_images/13797807-c5085d65aabcd066.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240",
-            title: "历史"
-        },
-    ],
-    articleList: [
-        {
-            id:1,
-            titlt:"9分大尺度神剧5星回归，建议边看边打码",
-            desc:"一下班就想赶紧回家看的剧，又回来了。 HBO黄暴大剧之一。 虽说“黄暴”之心不改，但如果光是冲着情色才想看它，那也太低估这部大爽片。 字幕来自人",
-            imgUrl:"https://upload-images.jianshu.io/upload_images/1211570-c2a25ef16d8cf02b?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240"
-        },
-        {
-            id:2,
-            titlt:"9分大尺度神剧5星回归，建议边看边打码",
-            desc:"一下班就想赶紧回家看的剧，又回来了。 HBO黄暴大剧之一。 虽说“黄暴”之心不改，但如果光是冲着情色才想看它，那也太低估这部大爽片。 字幕来自人",
-            imgUrl:"https://upload-images.jianshu.io/upload_images/1211570-c2a25ef16d8cf02b?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240"
-        },
-        {
-            id:3,
-            titlt:"9分大尺度神剧5星回归，建议边看边打码",
-            desc:"一下班就想赶紧回家看的剧，又回来了。 HBO黄暴大剧之一。 虽说“黄暴”之心不改，但如果光是冲着情色才想看它，那也太低估这部大爽片。 字幕来自人",
-            imgUrl:"https://upload-images.jianshu.io/upload_images/1211570-c2a25ef16d8cf02b?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240"
-        },
-    ],
-    recommandList:[
-        {
-            id:1,
-            imgUrl: pic1
-        },
-        {
-            id:2,
-            imgUrl: pic2
-        },
-        {
-            id:3,
-            imgUrl: pic3
-        },
-        {
-            id:4,
-            imgUrl: pic4
-        },
-        {
-            id:5,
-            imgUrl: pic5
-        }
+    topicList: [],
+    articleList: [],
+    "recommandList": [{
+        "id": 1,
+        "imgUrl": pic1
+    },
+     {
+        "id": 2,
+        "imgUrl": pic2
+    },
+    {
+        "id": 3,
+        "imgUrl": pic3
+    },
+    {
+        "id": 4,
+        "imgUrl": pic4
+    },
+    {
+        "id": 5,
+        "imgUrl": pic5
+    },
     ]
 });
 // immutable 监控数据不可改变
@@ -82,7 +47,11 @@ export default (state = defaultState, action) => {
     //     return state.set('list', action.list);
     // }
     switch (action.type) {
-
+        case CHANGE_HOME_DATA:
+            return state.merge({
+                topicList: fromJS(action.topicList),
+                articleList: fromJS(action.articleList)
+            })
         default:
             return state;
     }

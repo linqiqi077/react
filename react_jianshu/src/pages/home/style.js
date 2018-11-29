@@ -97,3 +97,13 @@ export const RecommendItem = styled.div`
     background:url(${(props)=>props.imgUrl});
     background-size:contain;
 `
+
+// 作者组件样式
+export const WriterWrapper  = styled.div`
+    width: 278px;
+    border: 1px solid #dcdcdc;
+    border-radius: 3px;
+    height: 300px;
+    line-height: 300px;
+    text-align: center;
+`
