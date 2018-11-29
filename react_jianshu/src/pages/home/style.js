@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const HomeWrapper = styled.div`
     overflow:hidden;
     width: 960px;
@@ -19,7 +20,7 @@ export const HomeLeft = styled.div`
 `
 
 export const HomeRight = styled.div`
-width: 240px;
+width: 280px;
 float:right;
 `
 
@@ -80,4 +81,19 @@ export const ListInfo = styled.div`
     line-height:24px;
     color:#999;
 }
+`
+
+// 推荐样式
+
+export const RecommendWrapper = styled.div`
+margin: 30px 0;
+width:280px;
+`
+// 这里接收到组件里面传过来的imgUrl值
+export const RecommendItem = styled.div`
+    width:280px;
+    height:50px;
+    margin-bottom:8px;
+    background:url(${(props)=>props.imgUrl});
+    background-size:contain;
 `
