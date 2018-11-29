@@ -36,29 +36,25 @@ const defaultState = fromJS({
     showScroll: false
 });
 // immutable 监控数据不可改变
-export default (state = defaultState, action) => {
-    // if (action.type === SEARCH_FOCUS) {
-    //     // 第三步：用set方法来改变值，这里的set方法不是直接修改state的值，而是先复制一份在修改复制后的数据。然后返回修改后的值
-    //     return state.set('focused', true);
-    // }
+const changeHomeData = (state, action) => {
+    return state.merge({
+        topicList: fromJS(action.topicList),
+        articleList: fromJS(action.articleList)
+    });
+}
 
-    // if (action.type === SEARCH_BLUR) {
-    //     return state.set('focused', false);
-    // }
-    // if (action.type === CHANGE_LIST) {
-    //     return state.set('list', action.list);
-    // }
+const addHomeList = (state, action) => {
+    return state.merge({
+        articleList: state.get('articleList').concat(action.list),
+        articlePage: action.nextPage
+    });
+}
+export default (state = defaultState, action) => {
     switch (action.type) {
         case CHANGE_HOME_DATA:
-            return state.merge({
-                topicList: fromJS(action.topicList),
-                articleList: fromJS(action.articleList)
-            });
+             return changeHomeData(state, action); 
         case ADD_HOME_LIST:
-            return state.merge({
-                articleList: state.get('articleList').concat(action.list),
-                articlePage: action.nextPage
-            });
+            return addHomeList(state, action);
         case TOGGLE_SCROLL_SHOW:
             return state.set('showScroll', action.show);
         default:
