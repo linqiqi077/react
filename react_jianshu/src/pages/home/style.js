@@ -23,10 +23,12 @@ width: 240px;
 float:right;
 `
 
+// 主题的样式
 export const TopicWrapper = styled.div`
 padding:20px 010px 0;
 margin-left:-18px;
 overflow:hidden;
+border-bottom: 1px solid #dcdcdc;
 `
 
 export const TopicItem = styled.div`
@@ -48,5 +50,34 @@ border-radius:4px;
     height:32px;
     margin-right:10px;
    
+}
+`
+
+// 列表样式
+export const ListItem = styled.div`
+    padding: 20px 0;
+    border-bottom: 1px solid #dcdcdc;
+    overflow:hidden;
+    .pic {
+        display:block;
+        width:125px;
+        height:100px;
+        float:right;
+    }
+`
+
+export const ListInfo = styled.div`
+.title {
+    font-size:18px;
+    font-weight:700;
+    color:#2f2f2f;
+    line-height:1.5;
+    margin-bottom: 4px;
+}
+.desc{
+    matgin: 0 0 8px;
+    font-size: 13px;
+    line-height:24px;
+    color:#999;
 }
 `

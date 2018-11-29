@@ -17,6 +17,26 @@ const defaultState = fromJS({
             imgUrl: "https://upload-images.jianshu.io/upload_images/13797807-c5085d65aabcd066.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240",
             title: "历史"
         },
+    ],
+    articleList: [
+        {
+            id:1,
+            titlt:"9分大尺度神剧5星回归，建议边看边打码",
+            desc:"一下班就想赶紧回家看的剧，又回来了。 HBO黄暴大剧之一。 虽说“黄暴”之心不改，但如果光是冲着情色才想看它，那也太低估这部大爽片。 字幕来自人",
+            imgUrl:"https://upload-images.jianshu.io/upload_images/1211570-c2a25ef16d8cf02b?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240"
+        },
+        {
+            id:2,
+            titlt:"9分大尺度神剧5星回归，建议边看边打码",
+            desc:"一下班就想赶紧回家看的剧，又回来了。 HBO黄暴大剧之一。 虽说“黄暴”之心不改，但如果光是冲着情色才想看它，那也太低估这部大爽片。 字幕来自人",
+            imgUrl:"https://upload-images.jianshu.io/upload_images/1211570-c2a25ef16d8cf02b?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240"
+        },
+        {
+            id:3,
+            titlt:"9分大尺度神剧5星回归，建议边看边打码",
+            desc:"一下班就想赶紧回家看的剧，又回来了。 HBO黄暴大剧之一。 虽说“黄暴”之心不改，但如果光是冲着情色才想看它，那也太低估这部大爽片。 字幕来自人",
+            imgUrl:"https://upload-images.jianshu.io/upload_images/1211570-c2a25ef16d8cf02b?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240"
+        },
     ]
 });
 // immutable 监控数据不可改变
