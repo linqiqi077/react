@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable'
-import { CHANGE_HOME_DATA, ADD_HOME_LIST } from './actionTypes'
+import { CHANGE_HOME_DATA, ADD_HOME_LIST, TOGGLE_SCROLL_SHOW } from './actionTypes'
 
 import pic1 from '../../../statics/banner-1.png'
 import pic2 from '../../../statics/banner-2.png'
@@ -32,7 +32,8 @@ const defaultState = fromJS({
         "imgUrl": pic5
     },
     ],
-    articlePage: 1
+    articlePage: 1,
+    showScroll: false
 });
 // immutable 监控数据不可改变
 export default (state = defaultState, action) => {
@@ -55,10 +56,12 @@ export default (state = defaultState, action) => {
             });
         case ADD_HOME_LIST:
             return state.merge({
-                articleList:state.get('articleList').concat(action.list),
-                articlePage:action.nextPage
+                articleList: state.get('articleList').concat(action.list),
+                articlePage: action.nextPage
             });
+        case TOGGLE_SCROLL_SHOW:
+            return state.set('showScroll', action.show);
         default:
             return state;
-}
+    }
 }

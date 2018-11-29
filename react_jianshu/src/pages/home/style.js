@@ -122,3 +122,15 @@ export const LoadMore = styled.div`
 `
 
 // 回到顶部
+export const BackTop = styled.div`
+    position: fixed;
+    width:60px;
+    height:50px;
+    line-height: 50px;
+    text-align: center;
+    right:100px;
+    bottom:100px;
+    font-size:12px;
+    cursor:pointer;
+    border: 1px solid #ccc;
+`
