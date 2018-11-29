@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { HomeWrapper, HomeLeft, HomeRight } from './style'
+import { HomeWrapper, HomeLeft, HomeRight,backTop } from './style'
 import Topic from './components/Topic';
 import List from './components/List';
 import Recommend from './components/Recommend';

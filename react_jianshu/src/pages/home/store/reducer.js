@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable'
-import { CHANGE_HOME_DATA } from './actionTypes'
+import { CHANGE_HOME_DATA, ADD_HOME_LIST } from './actionTypes'
 
 import pic1 from '../../../statics/banner-1.png'
 import pic2 from '../../../statics/banner-2.png'
@@ -15,7 +15,7 @@ const defaultState = fromJS({
         "id": 1,
         "imgUrl": pic1
     },
-     {
+    {
         "id": 2,
         "imgUrl": pic2
     },
@@ -31,7 +31,8 @@ const defaultState = fromJS({
         "id": 5,
         "imgUrl": pic5
     },
-    ]
+    ],
+    articlePage: 1
 });
 // immutable 监控数据不可改变
 export default (state = defaultState, action) => {
@@ -51,8 +52,13 @@ export default (state = defaultState, action) => {
             return state.merge({
                 topicList: fromJS(action.topicList),
                 articleList: fromJS(action.articleList)
-            })
+            });
+        case ADD_HOME_LIST:
+            return state.merge({
+                articleList:state.get('articleList').concat(action.list),
+                articlePage:action.nextPage
+            });
         default:
             return state;
-    }
+}
 }

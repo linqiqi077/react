@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { CHANGE_HOME_DATA } from './actionTypes'
+import { fromJS } from 'immutable'; // fromJS方法也可以吧一个普通数组改变为immutable类型的数组
+import { CHANGE_HOME_DATA,ADD_HOME_LIST } from './actionTypes'
 
 // 创建action
 const changeHomeData = (result)=>({
@@ -8,6 +9,13 @@ const changeHomeData = (result)=>({
         articleList:result.articleList
     
 })
+
+const addHomeList =(result,nextPage)=>({
+    type:ADD_HOME_LIST,
+    list: fromJS(result),
+    nextPage
+})
+
 export const getHomeInfo = () => {
     return (dispatch) => {
         axios.get('/api/home.json')
@@ -20,5 +28,19 @@ export const getHomeInfo = () => {
         .catch(e=>{
             console.log(e)
         })
+    }
+}
+
+export const getMoreList = (page)=>{
+    // redux-thunk的特性是dispatch可以返回一个函数
+    return (dispatch)=>{
+       axios.get('/api/homeList.json?page='+ page)
+       .then((res)=>{
+           const result = res.data.data;
+           dispatch(addHomeList(result,page+1))
+       })
+       .catch(e=>{
+           console.log(e)
+       })
     }
 }
