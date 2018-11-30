@@ -4,13 +4,13 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import store from './store/index';
 import Header from './common/header/index.js';
 import Login from './pages/login/index';
-
 // import Home from './pages/home/index';
 // import Detail from './pages/detail/index'
 // 等价于上面，会自动找到index.js文件
 
 import Home from './pages/home';
 import Detail from './pages/detail'
+import Write from './pages/write/index';
 
 class App extends Component {
   render() {
@@ -30,6 +30,7 @@ class App extends Component {
               {/* <Route path='/detail' exact component={Detail}></Route> */}
 
               <Route path="/login" component={Login}></Route>
+              <Route path="/write" component={Write}></Route>
             </div>
           </BrowserRouter>
         </div>
