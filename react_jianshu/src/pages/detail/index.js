@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { DetailWrapper, Header, Content } from './style'
 import { actionCreators } from './store'
 
@@ -31,4 +32,5 @@ const mapDispatch = (dispatch) => ({
         dispatch(actionCreators.getDetail(id));
     }
 })
-export default connect(mapState, mapDispatch)(Detail);
+// withRouter 这个方法使组件有能力获取路由里面所有的内容，包含参数
+export default connect(mapState, mapDispatch)(withRouter(Detail));

@@ -43,25 +43,23 @@ class Header extends Component {
     }
 
     render() {
-        const { focused, handleInputFocus, handleInputBlur, list,login,logout} = this.props;
+        const { focused, handleInputFocus, handleInputBlur, list, login, logout } = this.props;
         return (
             <div>
                 <HeaderWrapper>
-                    <Link to="/">
-                    <Logo/>
-                    </Link>
+                    <Logo />
                     <Nav>
                         <NavItem className="left active">首页</NavItem>
                         <NavItem tem className="left">下载App </NavItem>
                         {
-                           
-                            login?
-                            <NavItem className="right" onClick={logout}>退出</NavItem>:
-                            <Link to="/login">
-                            <NavItem className="right">登录</NavItem>
-                            </Link>
+
+                            login ?
+                                <NavItem className="right" onClick={logout}>退出</NavItem> :
+                                <Link to="/login">
+                                    <NavItem className="right">登录</NavItem>
+                                </Link>
                         }
-                        
+
                         <NavItem className="right">
                             <i className="iconfont">&#xe636;</i>
                         </NavItem>
@@ -83,9 +81,9 @@ class Header extends Component {
                     </Nav>
                     <Addition>
                         <Link to="/write">
-                        <Button className='writting'>
-                            <i className="iconfont" >&#xe615;</i>
-                            写文章
+                            <Button className='writting'>
+                                <i className="iconfont" >&#xe615;</i>
+                                写文章
                         </Button>
                         </Link>
                         <Button className="reg">注册</Button>
@@ -107,7 +105,7 @@ const mapStateToProps = (state) => {
         page: state.getIn(['header', "page"]),
         totalPage: state.getIn(["header", "totalPage"]),
         mouseIn: state.getIn(['header', "mouseIn"]),
-        login: state.getIn(['login','login'])
+        login: state.getIn(['login', 'login'])
     }
 }
 
@@ -155,7 +153,7 @@ const mapDispathToProps = (dispatch) => {
             }
             dispatch(action)
         },
-        logout(){
+        logout() {
             // 派发一个人login组件下面的action
             dispatch(loginActionCreators.logout())
         }

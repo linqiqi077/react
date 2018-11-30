@@ -9,7 +9,7 @@ import Login from './pages/login/index';
 // 等价于上面，会自动找到index.js文件
 
 import Home from './pages/home';
-import Detail from './pages/detail'
+import Detail from './pages/detail/loadable.js'
 import Write from './pages/write/index';
 
 class App extends Component {
