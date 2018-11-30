@@ -55,6 +55,12 @@ border-radius:4px;
 `
 
 // 列表样式
+
+export const ListWrapper = styled.div`
+.link {
+    text-decoration:none;
+}
+`
 export const ListItem = styled.div`
     padding: 20px 0;
     border-bottom: 1px solid #dcdcdc;
@@ -68,6 +74,7 @@ export const ListItem = styled.div`
 `
 
 export const ListInfo = styled.div`
+
 .title {
     font-size:18px;
     font-weight:700;

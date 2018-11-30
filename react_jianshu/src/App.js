@@ -23,8 +23,10 @@ class App extends Component {
             {/* exact 这个属性表示路径需要完全匹配才显示路由下面的组件，如果没有 exact 这个属性，则有包含关系的路由组件也是会被显示的 */}
             <div>
               <Route path='/' exact component={Home}></Route>
+              {/* 动态路由配置方式 */}
+              <Route path='/detail/:id' exact component={Detail}></Route>
 
-              <Route path='/detail' exact component={Detail}></Route>
+              {/* <Route path='/detail' exact component={Detail}></Route> */}
             </div>
           </BrowserRouter>
         </div>

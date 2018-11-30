@@ -5,7 +5,8 @@ import { actionCreators } from './store'
 
 class Detail extends Component {
     componentDidMount() {
-        this.props.getDetail()
+        // 动态路由的参数获取方式 this.props.match.params.id
+        this.props.getDetail(this.props.match.params.id)
     }
     render() {
         const { title, content } = this.props;
@@ -26,8 +27,8 @@ const mapState = (state) => ({
 })
 
 const mapDispatch = (dispatch) => ({
-    getDetail(){
-        dispatch(actionCreators.getDetail())
+    getDetail(id){
+        dispatch(actionCreators.getDetail(id))
     }
 })
 export default connect(mapState, mapDispatch)(Detail);

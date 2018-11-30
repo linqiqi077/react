@@ -1,34 +1,40 @@
 // 列表组件
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { ListItem, ListInfo, LoadMore } from '../style'
-import { actionCreators } from '../store'
+import {ListWrapper, ListItem, ListInfo, LoadMore } from '../style'
+import { actionCreators } from '../store';
+import { Link } from 'react-router-dom';
 
 class List extends Component {
     render() {
-        const { list,page } = this.props;
+        const { list, page } = this.props;
         return (
-            <div>
+            <ListWrapper>
                 {
                     list.map((item, index) => {
                         return (
-                            <ListItem key={index}>
-                                <img
-                                    className="pic"
-                                    src={item.get('imgUrl')}
-                                    alt=""
-                                />
-                                <ListInfo>
-                                    <h3 className="title">{item.get('title')}</h3>
-                                    <p className="desc">{item.get('desc')}</p>
-                                </ListInfo>
-                            </ListItem>
+                            // 动态路由配置方式
+                            <Link  key={index} to={'/detail/' + item.get('id')} className="link">
+                            {/* <Link  key={index} to={'/detail?id=' + item.get('id')} className="link"> */}
+                                <ListItem>
+                                    <img
+                                        className="pic"
+                                        src={item.get('imgUrl')}
+                                        alt=""
+                                    />
+                                    <ListInfo>
+                                        <h3 className="title">{item.get('title')}</h3>
+                                        <p className="desc">{item.get('desc')}</p>
+                                    </ListInfo>
+                                </ListItem>
+                            </Link>
+
 
                         )
                     })
                 }
                 <LoadMore onClick={() => this.props.getMoreList(page)}>更多文字</LoadMore>
-            </div>
+            </ListWrapper>
 
         )
     }
